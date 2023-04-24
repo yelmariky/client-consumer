@@ -1,8 +1,9 @@
 package fr.younes.clientconsumer;
 
+import org.springframework.stereotype.Service;
+
 import fr.younes.libkafkaspring.processor.MessageProcessor;
-
-
+@Service
 public class CustomMessageProcessor implements MessageProcessor {
 
     @Override

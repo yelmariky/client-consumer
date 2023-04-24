@@ -1,0 +1,18 @@
+##ajouter ce que tu veux et la mapper avec la lib
+my:
+  kafka:
+    consumer:
+      topic: test-younes
+      groupId: my-group-id
+      clientId: myclientIdyou
+spring:
+  sleuth:
+    traceId128: true
+    sampler:
+      probability: 1.0
+  application:
+    name: consumer-kafka
+
+
+
+
