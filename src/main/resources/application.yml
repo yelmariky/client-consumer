@@ -2,6 +2,7 @@
 my:
   kafka:
     consumer:
+      enabled: false
       topic: test-younes
       groupId: my-group-id
       clientId: myclientIdyou
