@@ -2,10 +2,11 @@
 my:
   kafka:
     consumer:
-      enabled: false
+      enabled: true
       topic: test-younes
       groupId: my-group-id
       clientId: myclientIdyou
+      #bootstrap-servers: local:5555
 spring:
   sleuth:
     traceId128: true
