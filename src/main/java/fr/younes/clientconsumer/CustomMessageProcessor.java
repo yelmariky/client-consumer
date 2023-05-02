@@ -11,7 +11,7 @@ public class CustomMessageProcessor implements MessageProcessor {
 
     @Override
     public void process(String message) {
-        log.info("**Processing message: " + message);
+        log.info("Processing message: " + message);
         // Ajoutez ici votre logique de traitement
     }
 }
