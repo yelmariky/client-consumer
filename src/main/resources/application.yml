@@ -3,9 +3,14 @@ my:
   kafka:
     consumer:
       enabled: true
-      topic: test-younes
-      groupId: my-group-id
-      clientId: myclientIdyou
+      topic: 'test-younes'
+      groupId: 'my-group-id'
+      clientId: 'myclientIdyou'
+    producer:
+      enabled: true
+      topic: 'test-younes'
+      groupId: 'my-group-id'
+      clientId: 'myclientIdyou'
       #bootstrap-servers: local:5555
 spring:
   sleuth:
@@ -14,6 +19,8 @@ spring:
       probability: 1.0
   application:
     name: consumer-kafka
+server:
+  port: 8889
 
 
 
