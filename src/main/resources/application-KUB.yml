@@ -1,0 +1,31 @@
+##ajouter ce que tu veux et la mapper avec la lib
+my:
+  kafka:
+    consumer:
+      enabled: true
+      bootstrap-servers: kafka-v0.default.svc.cluster.local:9092
+      topic: 'test-younes'
+      groupId: 'my-group-id'
+      clientId: 'myclientIdyou'
+    producer:
+      enabled: true
+      topic: 'test-younes'
+      groupId: 'my-group-id'
+      clientId: 'myclientIdyou'
+      bootstrap-servers: kafka-v0.default.svc.cluster.local:9092
+      key-serializer: ''
+      value-serializer: ''
+spring:
+  sleuth:
+    traceId128: true
+    sampler:
+      probability: 1.0
+  application:
+    name: consumer-kafka
+server:
+  port: 8889
+url-demo: http://elk-gateway-service:8080/api/super-hero
+
+
+
+

@@ -5,7 +5,7 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.3.4.RELEASE</version>
+		<version>2.7.0</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>fr.younes</groupId>
@@ -15,14 +15,10 @@
 	<description>Demo project for Spring Boot</description>
 	<properties>
 		<java.version>11</java.version>  
-<!--
-		<maven.compiler.source>1.8</maven.compiler.source>
-    <maven.compiler.target>1.8</maven.compiler.target>-->
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>	
-	<logstash-logback-encoder.version>5.2</logstash-logback-encoder.version>
-	<!--<spring-cloud.version>2021.0.8-SNAPSHOT</spring-cloud.version> -->
-	<spring-cloud.version>Hoxton.SR9</spring-cloud.version> 
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>	
+		<avro.version>1.8.2</avro.version>
+		<spring-cloud.version>2021.0.3</spring-cloud.version>
 
 	</properties>
 	<dependencies>
@@ -37,12 +33,13 @@
 			<artifactId>lib-kafka-spring</artifactId>
 			<version>1.3.4</version>
 		</dependency>
-		
+		<!--
 		<dependency>
         <groupId>net.logstash.logback</groupId>
         <artifactId>logstash-logback-encoder</artifactId>
         <version>${logstash-logback-encoder.version}</version>
     </dependency>
+	-->
 	 <dependency>
         <groupId>com.fasterxml.jackson.core</groupId>
         <artifactId>jackson-databind</artifactId>
@@ -54,6 +51,35 @@
             <version>1.18.20</version>
         <scope>provided</scope>
         </dependency>
+		<dependency>
+			<groupId>net.logstash.logback</groupId>
+			<artifactId>logstash-logback-encoder</artifactId>
+			<version>7.3</version>
+		</dependency>
+		
+  <dependency>
+    <groupId>org.apache.avro</groupId>
+    <artifactId>avro</artifactId>
+    <version>1.10.2</version>
+  </dependency>
+
+	<!--        <dependency>
+            <groupId>io.confluent</groupId>
+            <artifactId>kafka-avro-serializer</artifactId>   
+            <version>5.2.1</version>
+        </dependency>
+
+	<dependency>
+    <groupId>org.apache.avro</groupId>
+    <artifactId>avro-compiler</artifactId>
+    <version>1.8.2</version>
+</dependency>
+<dependency>
+    <groupId>org.apache.avro</groupId>
+    <artifactId>avro-maven-plugin</artifactId>
+    <version>1.8.2</version>
+</dependency>
+-->
 	
 
 		
@@ -96,6 +122,25 @@
         </executions>
     
       </plugin>
+      <plugin>
+    <groupId>org.apache.avro</groupId>
+    <artifactId>avro-maven-plugin</artifactId>
+    <version>${avro.version}</version>
+        <executions>
+            <execution>
+                <id>schemas</id>
+                <phase>generate-sources</phase>
+                <goals>
+                    <goal>schema</goal>
+                </goals>
+                <configuration>
+                    <sourceDirectory>${project.basedir}/src/main/resources/avro/</sourceDirectory>
+                    <outputDirectory>${project.build.directory}/generated-sources</outputDirectory>
+                    <stringType>String</stringType>
+                </configuration>
+            </execution>
+        </executions>
+</plugin>
 			
 		</plugins>
 	</build>
@@ -125,6 +170,7 @@
 				<enabled>true</enabled>
 			</snapshots>
 		</repository>
+
 	</repositories>
 	<pluginRepositories>
 		<pluginRepository>

@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: elk-customer-daemonset
+spec:
+  selector:
+    matchLabels:
+      app: elk-customer
+  template:
+    metadata:
+      labels:
+        app: elk-customer
+    spec:
+      hostNetwork: true
+      containers:
+      - name: my-container
+        image: dokeryelmariki/elk-customer:latest
+        ports:
+        - containerPort: 8000

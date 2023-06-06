@@ -1,0 +1,10 @@
+{
+  "type": "record",
+  "name": "Person",
+   "namespace":"fr.younes.clientconsumer.avro",
+  "fields": [
+    { "name": "nom", "type": "string" },
+    { "name": "prenom", "type": "string" },
+    { "name": "age", "type": "int" }
+  ]
+}
